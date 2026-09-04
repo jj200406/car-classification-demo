@@ -6,7 +6,7 @@ st.subheader("AI Image Classification Demo")
 st.write( "Upload an image and let the AI model determine " "whether it contains a car." )
 uploaded_file = st.file_uploader( "Choose an image", type=["jpg", "jpeg", "png"] )
 if uploaded_file is not None:
-st.image(
+    st.image(
     uploaded_file,
     caption="Uploaded Image",
     width="stretch"
