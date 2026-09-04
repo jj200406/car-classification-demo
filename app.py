@@ -1,17 +1,16 @@
-import streamlit as st 
-import requests
-st.set_page_config( page_title="Car Classifier", page_icon="🚗", layout="centered" )
-st.title("🚗 Car vs Not Car")
-st.write("Upload an image and let the AI model classify it.")
-uploaded_file = st.file_uploader( "Upload an image", type=["jpg", "jpeg", "png"] )
+import streamlit as st import requests
+st.set_page_config( page_title="Car vs Not Car", page_icon="🚗", layout="centered" )
+st.title("🚗 Car vs Not Car") st.subheader("AI Image Classification Demo")
+st.write( "Upload an image and let the AI model determine " "whether it contains a car." )
+uploaded_file = st.file_uploader( "Choose an image", type=["jpg", "jpeg", "png"] )
 if uploaded_file is not None:
-    st.image(
-        uploaded_file,
-        caption="Uploaded image",
-        use_container_width=True
-    )
+st.image(
+    uploaded_file,
+    caption="Uploaded Image",
+    width="stretch"
+)
 
-if st.button("Classify Image"):
+if st.button("🔍 Classify Image", width="stretch"):
 
     endpoint = st.secrets["CUSTOM_VISION_URL"]
     prediction_key = st.secrets["CUSTOM_VISION_KEY"]
@@ -43,12 +42,15 @@ if st.button("Classify Image"):
         probability = best_prediction["probability"]
 
         st.success(
-            f"Prediction: **{tag}**"
+            f"Prediction: {tag}"
         )
 
-        st.write(
-            f"Confidence: **{probability:.2%}**"
+        st.metric(
+            "Confidence",
+            f"{probability:.2%}"
         )
+
+        st.progress(probability)
 
     else:
         st.error(
