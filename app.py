@@ -5,11 +5,11 @@ st.title("🚗 Car vs Not Car")
 st.write("Upload an image and let the AI model classify it.")
 uploaded_file = st.file_uploader( "Upload an image", type=["jpg", "jpeg", "png"] )
 if uploaded_file is not None:
-st.image(
-    uploaded_file,
-    caption="Uploaded image",
-    use_container_width=True
-)
+    st.image(
+        uploaded_file,
+        caption="Uploaded image",
+        use_container_width=True
+    )
 
 if st.button("Classify Image"):
 
