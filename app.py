@@ -1,6 +1,8 @@
-import streamlit as st import requests
+import streamlit as st 
+import requests
 st.set_page_config( page_title="Car Classifier", page_icon="🚗", layout="centered" )
-st.title("🚗 Car vs Not Car") st.write("Upload an image and let the AI model classify it.")
+st.title("🚗 Car vs Not Car")
+st.write("Upload an image and let the AI model classify it.")
 uploaded_file = st.file_uploader( "Upload an image", type=["jpg", "jpeg", "png"] )
 if uploaded_file is not None:
 st.image(
